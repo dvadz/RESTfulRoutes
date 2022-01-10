@@ -23,7 +23,7 @@ app.get("/comments/new", (req, res) => {
 app.get("/comments/:id", (req, res) => {
   const { id } = req.params;
   const retrievedComment = allComments.find((comment) => {
-    return comment.id === parseInt(id);
+    return comment.id === id;
   });
   res.render("details", { comment: retrievedComment });
 });
