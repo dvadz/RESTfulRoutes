@@ -53,7 +53,7 @@ app.patch("/comments/:id", (req, res) => {
     return comment.id === id;
   });
   retrievedComment.comment = newComment;
-  res.send("It worked! I hope.");
+  res.redirect("/comments");
 });
 
 app.get("*", (req, res) => {
