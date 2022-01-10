@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('partials/head.ejs') %>
+  </head>
+  <body>
+    <h1>All comments</h1>
+    <div id="allcomments">
+      <% for(let comment of allComments){ %>
+      <div>
+        <p><%= comment.comment %> - <span><%= comment.fname %></span></p>
+      </div>
+      <% } %>
+    </div>
+    <hr />
+    <h2>Add a comment</h2>
+    <form action="/comments" method="post">
+      <label for="comment">Comment</label>
+      <textarea type="text" name="comment" placeholder="Type our comment here"></textarea>
+      <label for="fname"> First name</label>
+      <input type="text" name="fname" id="" />
+      <button>Submit</button>
+    </form>
+  </body>
+</html>
