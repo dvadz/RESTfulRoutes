@@ -4,8 +4,8 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 const allComments = [
-  { comment: "That was so funny lol!", fname: "Daniel" },
-  { comment: "What happened? Did I miss something?", fname: "Gordo" },
+  { id: 1, comment: "That was so funny lol!", fname: "Daniel" },
+  { id: 2, comment: "What happened? Did I miss something?", fname: "Gordo" },
 ];
 app.set("view engine", "ejs");
 app.use(express.static("public"));
@@ -18,6 +18,14 @@ app.get("/comments", (req, res) => {
 
 app.get("/comments/new", (req, res) => {
   res.render("new");
+});
+
+app.get("/comments/:id", (req, res) => {
+  const { id } = req.params;
+  const retrievedComment = allComments.find((comment) => {
+    return comment.id === parseInt(id);
+  });
+  res.render("details", { comment: retrievedComment });
 });
 
 app.post("/comments", (req, res) => {
