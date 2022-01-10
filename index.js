@@ -1,5 +1,6 @@
 const { v4: uuidv4 } = require("uuid");
 const express = require("express");
+const { concatSeries } = require("async");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -33,6 +34,16 @@ app.post("/comments", (req, res) => {
   allComments.push({ id: uuidv4(), comment, fname });
   console.log(allComments);
   res.redirect("/comments");
+});
+
+app.patch("/comments/:id", (req, res) => {
+  const { id } = req.params;
+  const newComment = req.body.comment;
+  const retrievedComment = allComments.find((comment) => {
+    return comment.id === id;
+  });
+  retrievedComment.comment = newComment;
+  res.send("It worked! I hope.");
 });
 
 app.get("*", (req, res) => {
