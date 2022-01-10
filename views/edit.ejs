@@ -7,9 +7,13 @@
     <title>Document</title>
   </head>
   <body>
-    <h1>Comment #<%= comment.id %></h1>
-    <h2><%= comment.comment %> - <%= comment.fname %></h2>
+    <h1>Edit</h1>
+    <form action="">
+      <textarea name="comment" id="comment" cols="30" rows="10"> <%= comment.comment %>> </textarea>
+      <br />
+      <button>Submit</button>
+    </form>
+    <br />
     <a href="/comments">Back</a>
-    <a href="/comments/<%=comment.id%>/edit">Edit</a>
   </body>
 </html>

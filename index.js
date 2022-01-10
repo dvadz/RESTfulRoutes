@@ -29,6 +29,14 @@ app.get("/comments/:id", (req, res) => {
   res.render("details", { comment: retrievedComment });
 });
 
+app.get("/comments/:id/edit", (req, res) => {
+  const { id } = req.params;
+  const retrievedComment = allComments.find((comment) => {
+    return comment.id === id;
+  });
+  res.render("edit", { comment: retrievedComment });
+});
+
 app.post("/comments", (req, res) => {
   const { comment, fname } = req.body;
   allComments.push({ id: uuidv4(), comment, fname });
