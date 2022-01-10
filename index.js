@@ -5,7 +5,7 @@ const app = express();
 const methodOverride = require("method-override");
 const PORT = process.env.PORT || 3000;
 
-const allComments = [
+let allComments = [
   { id: uuidv4(), comment: "That was so funny lol!", fname: "Daniel" },
   { id: uuidv4(), comment: "What happened? Did I miss something?", fname: "Gordo" },
 ];
@@ -53,6 +53,13 @@ app.patch("/comments/:id", (req, res) => {
     return comment.id === id;
   });
   retrievedComment.comment = newComment;
+  res.redirect("/comments");
+});
+
+app.delete("/comments/:id", (req, res) => {
+  const { id } = req.params;
+  allComments = allComments.filter((c) => c.id !== id);
+  console.log("Delete");
   res.redirect("/comments");
 });
 
