@@ -15,6 +15,10 @@ app.get("/comments", (req, res) => {
   res.render("index", { allComments });
 });
 
+app.get("/comments/new", (req, res) => {
+  res.render("new");
+});
+
 app.get("*", (req, res) => {
   res.send("I heard you but you're not making any sense");
 });
