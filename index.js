@@ -3,8 +3,8 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 const allComments = [
-  { comment: "Welcome to the postmaster!", fname: "Daniel" },
-  { comment: "Hey man", fname: "Gordo" },
+  { comment: "That was so funny lol!", fname: "Daniel" },
+  { comment: "What happened? Did I miss something?", fname: "Gordo" },
 ];
 app.set("view engine", "ejs");
 app.use(express.static("public"));
