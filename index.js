@@ -2,6 +2,7 @@ const { v4: uuidv4 } = require("uuid");
 const express = require("express");
 const { concatSeries } = require("async");
 const app = express();
+const methodOverride = require("method-override");
 const PORT = process.env.PORT || 3000;
 
 const allComments = [
@@ -9,6 +10,7 @@ const allComments = [
   { id: uuidv4(), comment: "What happened? Did I miss something?", fname: "Gordo" },
 ];
 app.set("view engine", "ejs");
+app.use(methodOverride("_method"));
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 
