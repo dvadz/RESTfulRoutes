@@ -1,11 +1,11 @@
-const { concatSeries } = require("async");
+const { v4: uuidv4 } = require("uuid");
 const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 const allComments = [
-  { id: 1, comment: "That was so funny lol!", fname: "Daniel" },
-  { id: 2, comment: "What happened? Did I miss something?", fname: "Gordo" },
+  { id: uuidv4(), comment: "That was so funny lol!", fname: "Daniel" },
+  { id: uuidv4(), comment: "What happened? Did I miss something?", fname: "Gordo" },
 ];
 app.set("view engine", "ejs");
 app.use(express.static("public"));
@@ -30,7 +30,7 @@ app.get("/comments/:id", (req, res) => {
 
 app.post("/comments", (req, res) => {
   const { comment, fname } = req.body;
-  allComments.push({ comment, fname });
+  allComments.push({ id: uuidv4(), comment, fname });
   console.log(allComments);
   res.redirect("/comments");
 });
