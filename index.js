@@ -1,3 +1,4 @@
+const { concatSeries } = require("async");
 const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -17,6 +18,13 @@ app.get("/comments", (req, res) => {
 
 app.get("/comments/new", (req, res) => {
   res.render("new");
+});
+
+app.post("/comments", (req, res) => {
+  const { comment, fname } = req.body;
+  allComments.push({ comment, fname });
+  console.log(allComments);
+  res.redirect("/comments");
 });
 
 app.get("*", (req, res) => {
