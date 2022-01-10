@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <%- include('partials/head.ejs') %>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Restful</title>
   </head>
   <body>
     <h1>All comments</h1>
     <div id="allcomments">
-      <% for(let comment of allComments){ %>
-      <div>
-        <p><%= comment.comment %> - <span><%= comment.fname %></span></p>
-      </div>
-      <% } %>
+      <ul>
+        <% for(let comment of allComments){ %>
+        <li><%= comment.comment %> - <b><%= comment.fname %></b></li>
+        <% } %>
+      </ul>
     </div>
     <hr />
     <h2>Add a comment</h2>
